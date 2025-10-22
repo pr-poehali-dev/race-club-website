@@ -6,10 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [membershipDialogOpen, setMembershipDialogOpen] = useState(false);
 
   const upcomingRaces = [
     {
@@ -127,11 +130,52 @@ const Index = () => {
               <a href="#gallery" className="text-foreground hover:text-primary transition-colors">
                 Галерея
               </a>
-              <Button>Стать членом</Button>
+              <Button onClick={() => setMembershipDialogOpen(true)}>Стать членом</Button>
             </div>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Icon name="Menu" size={24} />
-            </Button>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Icon name="Menu" size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Меню</SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-4 mt-6">
+                  <a 
+                    href="#calendar" 
+                    className="text-lg py-2 hover:text-primary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Календарь
+                  </a>
+                  <a 
+                    href="#results" 
+                    className="text-lg py-2 hover:text-primary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Результаты
+                  </a>
+                  <a 
+                    href="#gallery" 
+                    className="text-lg py-2 hover:text-primary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Галерея
+                  </a>
+                  <Button 
+                    className="w-full mt-4" 
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setMembershipDialogOpen(true);
+                    }}
+                  >
+                    Стать членом
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
@@ -146,17 +190,17 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="text-6xl md:text-7xl font-heading font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 md:mb-6">
             Racing Club
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-2xl mx-auto">
             Почувствуй адреналин гонок. Присоединяйся к профессиональным соревнованиям.
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button size="lg" className="text-lg">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Button size="lg" className="text-base sm:text-lg">
               Записаться на гонку
             </Button>
-            <Button size="lg" variant="outline" className="text-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
+            <Button size="lg" variant="outline" className="text-base sm:text-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
               Узнать больше
             </Button>
           </div>
@@ -378,7 +422,7 @@ const Index = () => {
               Присоединяйся к Racing Club и участвуй в профессиональных гонках
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="bg-white text-secondary hover:bg-white/90">
+              <Button size="lg" className="bg-white text-secondary hover:bg-white/90" onClick={() => setMembershipDialogOpen(true)}>
                 Оформить членство
               </Button>
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
@@ -439,6 +483,40 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <Dialog open={membershipDialogOpen} onOpenChange={setMembershipDialogOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Стать членом Racing Club</DialogTitle>
+            <DialogDescription>
+              Заполните форму для оформления членства в нашем клубе
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="member-name">Имя и фамилия</Label>
+              <Input id="member-name" placeholder="Иван Иванов" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-email">Email</Label>
+              <Input id="member-email" type="email" placeholder="ivan@example.com" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-phone">Телефон</Label>
+              <Input id="member-phone" placeholder="+7 (999) 123-45-67" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-experience">Опыт вождения</Label>
+              <Input id="member-experience" placeholder="Начинающий / Опытный / Профессионал" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-car">Марка автомобиля</Label>
+              <Input id="member-car" placeholder="BMW M3" />
+            </div>
+            <Button className="w-full">Отправить заявку</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
