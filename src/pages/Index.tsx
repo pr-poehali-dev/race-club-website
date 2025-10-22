@@ -6,12 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
   const [membershipDialogOpen, setMembershipDialogOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const upcomingRaces = [
     {
@@ -209,10 +210,10 @@ const Index = () => {
       <section id="calendar" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
               Календарь гонок
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               Предстоящие события и возможность регистрации на соревнования
             </p>
           </div>
@@ -288,10 +289,10 @@ const Index = () => {
       <section id="results" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
               Результаты гонок
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               Итоги последних соревнований и турнирная таблица
             </p>
           </div>
@@ -377,10 +378,10 @@ const Index = () => {
       <section id="gallery" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
               Галерея
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               Лучшие моменты наших гонок
             </p>
           </div>
@@ -414,10 +415,10 @@ const Index = () => {
       <section className="py-20 bg-secondary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-6">
               Стань частью команды
             </h2>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-base sm:text-lg md:text-xl mb-8 opacity-90">
               Присоединяйся к Racing Club и участвуй в профессиональных гонках
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
