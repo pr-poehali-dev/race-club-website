@@ -11,6 +11,8 @@ import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [membershipDialogOpen, setMembershipDialogOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const upcomingRaces = [
     {
