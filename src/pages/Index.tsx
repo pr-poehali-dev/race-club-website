@@ -476,10 +476,41 @@ const Index = () => {
               Присоединяйся к Racing Club и участвуй в профессиональных гонках
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-secondary hover:bg-white/90" onClick={() => setMembershipDialogOpen(true)}>
-                Оформить членство
-              </Button>
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-white text-secondary hover:bg-white/90 w-full sm:w-auto">
+                    Оформить членство
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Членство в Racing Club</DialogTitle>
+                    <DialogDescription>
+                      Заполните форму для вступления в клуб
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="footer-member-name">Имя и фамилия</Label>
+                      <Input id="footer-member-name" placeholder="Иван Иванов" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="footer-member-email">Email</Label>
+                      <Input id="footer-member-email" type="email" placeholder="ivan@example.com" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="footer-member-phone">Телефон</Label>
+                      <Input id="footer-member-phone" placeholder="+7 (999) 123-45-67" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="footer-member-experience">Опыт вождения</Label>
+                      <Input id="footer-member-experience" placeholder="Опишите ваш опыт" />
+                    </div>
+                    <Button className="w-full">Отправить заявку</Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 w-full sm:w-auto">
                 Связаться с нами
               </Button>
             </div>
