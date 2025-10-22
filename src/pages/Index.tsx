@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
@@ -128,7 +128,38 @@ const Index = () => {
               <a href="#gallery" className="text-foreground hover:text-primary transition-colors">
                 Галерея
               </a>
-              <Button onClick={() => setMembershipDialogOpen(true)}>Стать членом</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Стать членом</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Членство в Racing Club</DialogTitle>
+                    <DialogDescription>
+                      Заполните форму для вступления в клуб
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="desktop-member-name">Имя и фамилия</Label>
+                      <Input id="desktop-member-name" placeholder="Иван Иванов" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="desktop-member-email">Email</Label>
+                      <Input id="desktop-member-email" type="email" placeholder="ivan@example.com" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="desktop-member-phone">Телефон</Label>
+                      <Input id="desktop-member-phone" placeholder="+7 (999) 123-45-67" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="desktop-member-experience">Опыт вождения</Label>
+                      <Input id="desktop-member-experience" placeholder="Опишите ваш опыт" />
+                    </div>
+                    <Button className="w-full">Отправить заявку</Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -162,15 +193,40 @@ const Index = () => {
                   >
                     Галерея
                   </a>
-                  <Button 
-                    className="w-full mt-4" 
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMembershipDialogOpen(true);
-                    }}
-                  >
-                    Стать членом
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="w-full mt-4">
+                        Стать членом
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Членство в Racing Club</DialogTitle>
+                        <DialogDescription>
+                          Заполните форму для вступления в клуб
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="space-y-4 py-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="mobile-member-name">Имя и фамилия</Label>
+                          <Input id="mobile-member-name" placeholder="Иван Иванов" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="mobile-member-email">Email</Label>
+                          <Input id="mobile-member-email" type="email" placeholder="ivan@example.com" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="mobile-member-phone">Телефон</Label>
+                          <Input id="mobile-member-phone" placeholder="+7 (999) 123-45-67" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="mobile-member-experience">Опыт вождения</Label>
+                          <Input id="mobile-member-experience" placeholder="Опишите ваш опыт" />
+                        </div>
+                        <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>Отправить заявку</Button>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </SheetContent>
             </Sheet>
