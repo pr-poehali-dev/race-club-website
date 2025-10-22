@@ -6,12 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [membershipDialogOpen, setMembershipDialogOpen] = useState(false);
 
   const upcomingRaces = [
@@ -421,7 +420,7 @@ const Index = () => {
             <p className="text-xl mb-8 opacity-90">
               Присоединяйся к Racing Club и участвуй в профессиональных гонках
             </p>
-            <div className="flex gap-4 justify-center flex-wrap">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-secondary hover:bg-white/90" onClick={() => setMembershipDialogOpen(true)}>
                 Оформить членство
               </Button>
