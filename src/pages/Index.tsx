@@ -554,10 +554,10 @@ const Index = () => {
               <h3 className="font-semibold mb-3">Социальные сети</h3>
               <div className="flex gap-3">
                 <Button size="icon" variant="ghost">
-                  <Icon name="Instagram" size={20} />
+                  <Icon name="Send" size={20} />
                 </Button>
                 <Button size="icon" variant="ghost">
-                  <Icon name="Facebook" size={20} />
+                  <Icon name="MessageCircle" size={20} />
                 </Button>
                 <Button size="icon" variant="ghost">
                   <Icon name="Youtube" size={20} />
